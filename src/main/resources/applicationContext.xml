@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="application.properties"/>
+
+<bean id="dogId"
+      class="peaksoft.model.Dog">
+    <constructor-arg index="0" value="${dog.name}"/>
+    <constructor-arg index="1" value="${dog.age}"/>
+    <constructor-arg index="2" value="${dog.breed}"/>
+    <constructor-arg index="3" value="${dog.color}"/>
+
+</bean>
+
+    <bean id="catId"
+          class="peaksoft.model.Cat">
+        <constructor-arg index="0" value="${cat.name}"/>
+        <constructor-arg index="1" value="${cat.age}"/>
+        <constructor-arg index="2" value="${cat.breed}"/>
+        <constructor-arg index="3" value="${cat.color}"/>
+    </bean>
+
+    <bean id="personId"
+          class="peaksoft.model.Person">
+     <property name="name" value="${person.name}"/>
+        <property name="age" value="${person.age}"/>
+       <property name="animal" ref="dogId"/>
+
+    </bean>
+
+    <bean id="friendId"
+          class="peaksoft.model.Friend">
+        <property name="name" value="${friend.name}"/>
+        <property name="age" value="${friend.age}"/>
+        <property name="animal" ref="catId"/>
+    </bean>
+
+</beans>
